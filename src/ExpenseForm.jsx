@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 // import { compile } from "tailwindcss";
 
 function ExpenseForm({ onAddExpense }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
-
+  const titleRef = useRef();
   const handlesubmit = (e) => {
     e.preventDefault();
-    if (!title.trim() || amount<=0){
-      
-      return
+    if (!title.trim() || amount <= 0) {
+      return;
     }
 
-    onAddExpense({  title, amount, id: Date.now() });
+    onAddExpense({ title, amount, id: Date.now() });
 
     setTitle("");
     setAmount("");
+    titleRef.current.focus();
   };
 
   return (
@@ -29,6 +29,7 @@ function ExpenseForm({ onAddExpense }) {
           type="text"
           placeholder="Expense Title"
           value={title}
+          ref={titleRef}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
@@ -40,7 +41,9 @@ function ExpenseForm({ onAddExpense }) {
           onChange={(e) => setAmount(Number(e.target.value))}
         />
         <button
-          className="text-nowrap p-3 border-black font-bold rounded-3xl w-fit bg-zinc-900 cursor-pointer hover:bg-zinc-950"
+          className="text-nowrap p-3 
+          hover:text-black
+          border-black font-bold rounded-3xl w-fit bg-zinc-900 cursor-pointer hover:bg-zinc-200"
           type="submit"
         >
           Add Expense

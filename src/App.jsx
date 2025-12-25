@@ -38,11 +38,11 @@ function App() {
   };
 
   return (
-    <div className="app-container flex flex-col text-white w-screen h-screen bg-zinc-600 items-center justify-center">
+    <div className="selection:text-cyan-500 app-container flex flex-col text-white w-screen h-screen bg-zinc-600 items-center justify-center">
       <div className="flex lg:p-10 p-2 flex-col h-[90vh] w-[90vw] lg:w-[70vw] items-center justify-around lg:gap-10 gap-2 bg-zinc-800 rounded-3xl">
-        <h1 className="font-bold lg:text-5xl text-2xl ">💰Expense Tracker</h1>
+        <h1 className="font-bold lg:text-5xl text-2xl text-amber-300 ">💰Expense Tracker</h1>
         <ExpenseForm onAddExpense={addExpense} />
-        <h3 className="lg:text-3xl text-2xl font-bold">Total Expense ₹{totalExpense}</h3>
+        <h3 className="lg:text-3xl text-amber-300 text-2xl font-bold">Total Expense ₹{totalExpense}</h3>
         <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
       </div>
     </div>
